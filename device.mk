@@ -213,6 +213,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.data_ltd_sys_ind=1 \
     persist.radio.is_wps_enabled=true \
     persist.radio.videopause.mode=1 \
+    persist.radio.sap_silent_pin=1 \
     persist.radio.sib16_support=1 \
     persist.radio.data_con_rprt=true \
     persist.radio.always_send_plmn=true \
@@ -283,10 +284,6 @@ PRODUCT_PACKAGES += \
     libbt-vendor \
     android.hardware.bluetooth@1.0-impl    \
     android.hardware.bluetooth@1.0-service
-
-# Neuralnetworks HAL
-PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks@1.0-service-hvx
 
 # DRM HAL
 PRODUCT_PACKAGES += \
