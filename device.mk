@@ -187,6 +187,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610
 
+# b/68017541
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
+
 # Enable camera EIS3.0
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.is_type=5 \
@@ -227,6 +231,29 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.vendor.extension_library=libqti-perfd-client.so
+
+# settings to enable Device Orientation Sensors
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qti.sensors.dev_ori=true
+
+# settings to disable unused secondary wakeup
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qti.sensors.wu=false
+
+# settings to disable unused algorithms
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qti.sdk.sensors.gestures=false \
+    ro.qti.sensors.amd=false \
+    ro.qti.sensors.cmc=false \
+    ro.qti.sensors.facing=false \
+    ro.qti.sensors.pedometer=false \
+    ro.qti.sensors.rmd=false \
+    ro.qti.sensors.scrn_ortn=false
+
+# use SMGR supplied version of step detector and counter
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qti.sensors.step_counter=false \
+    ro.qti.sensors.step_detector=false
 
 # camera gyro and laser sensor
 PRODUCT_PROPERTY_OVERRIDES += \
