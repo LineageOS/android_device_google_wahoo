@@ -180,3 +180,6 @@ AB_OTA_PARTITIONS += \
     system \
     vbmeta \
     dtbo
+
+# Allow Lineage config to override others
+-include device/google/wahoo/BoardConfigLineage.mk
