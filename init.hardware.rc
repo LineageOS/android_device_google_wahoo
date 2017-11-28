@@ -230,6 +230,7 @@ on property:sys.user.0.ce_available=true
 
 on property:sys.ramoops.decrypted=true
     mount pstore pstore /sys/fs/pstore
+    chown system log /sys/fs/pstore
     chown system log /sys/fs/pstore/console-ramoops
     chmod 0440 /sys/fs/pstore/console-ramoops
     chown system log /sys/fs/pstore/console-ramoops-0
@@ -582,6 +583,19 @@ on property:sys.boot_completed=1
     write /dev/cpuset/application/background/cpus 0-1
     write /dev/cpuset/application/cpus 0-1,4-5
 
+    # UFS health
+    chmod 755 /sys/kernel/debug/ufshcd0
+    chown 644 /sys/kernel/debug/ufshcd0/err_state
+    chmod 644 /sys/kernel/debug/ufshcd0/power_mode
+    chmod 644 /sys/kernel/debug/ufshcd0/host_regs
+    chmod 644 /sys/kernel/debug/ufshcd0/show_hba
+    chmod 644 /sys/kernel/debug/ufshcd0/dump_device_desc
+    chmod 644 /sys/kernel/debug/ufshcd0/dump_health_desc
+    chmod 755 /sys/kernel/debug/ufshcd0/stats
+    chmod 644 /sys/kernel/debug/ufshcd0/stats/req_stats
+    chmod 644 /sys/kernel/debug/ufshcd0/stats/query_stats
+    chmod 644 /sys/kernel/debug/ufshcd0/stats/err_stats
+
 on property:init.svc.per_mgr=running
     start per_proxy
 
@@ -609,9 +623,8 @@ service ss_ramdump /vendor/bin/subsystem_ramdump
 
 on property:persist.sys.ssr.enable_ramdumps=1
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
-    mkdir /data/vendor/ssrdump 761 root system
+    mkdir /data/vendor/ssrdump 771 root system
     mkdir /data/vendor/ramdump 771 root system
-    mkdir /data/vendor/ramdump/bluetooth 771 root system
     start ss_ramdump
 
 on property:persist.sys.ssr.enable_ramdumps=0

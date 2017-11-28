@@ -21,6 +21,10 @@ PRODUCT_COPY_FILES += \
     device/google/wahoo/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
+# Set the SVN for the targeted MR release
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.svn=4
+
 # Enforce privapp-permissions whitelist
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.control_privapp_permissions=enforce
@@ -67,7 +71,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh \
     $(LOCAL_PATH)/init.qcom.ipastart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.ipastart.sh \
     $(LOCAL_PATH)/init.insmod.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.insmod.sh \
-    $(LOCAL_PATH)/init.ramoops.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/init.ramoops.sh
+    $(LOCAL_PATH)/init.ramoops.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/init.ramoops.sh \
+    frameworks/native/services/vr/virtual_touchpad/idc/vr-virtual-touchpad-0.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/vr-virtual-touchpad-0.idc \
+    frameworks/native/services/vr/virtual_touchpad/idc/vr-virtual-touchpad-1.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/vr-virtual-touchpad-1.idc
 
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
   PRODUCT_COPY_FILES += \
@@ -181,6 +187,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610
 
+# b/68017541
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
+
 # Enable camera EIS3.0
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.is_type=5 \
@@ -207,6 +217,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.data_ltd_sys_ind=1 \
     persist.radio.is_wps_enabled=true \
     persist.radio.videopause.mode=1 \
+    persist.radio.sap_silent_pin=1 \
     persist.radio.sib16_support=1 \
     persist.radio.data_con_rprt=true \
     persist.radio.always_send_plmn=true \
@@ -220,6 +231,29 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.vendor.extension_library=libqti-perfd-client.so
+
+# settings to enable Device Orientation Sensors
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qti.sensors.dev_ori=true
+
+# settings to disable unused secondary wakeup
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qti.sensors.wu=false
+
+# settings to disable unused algorithms
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qti.sdk.sensors.gestures=false \
+    ro.qti.sensors.amd=false \
+    ro.qti.sensors.cmc=false \
+    ro.qti.sensors.facing=false \
+    ro.qti.sensors.pedometer=false \
+    ro.qti.sensors.rmd=false \
+    ro.qti.sensors.scrn_ortn=false
+
+# use SMGR supplied version of step detector and counter
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qti.sensors.step_counter=false \
+    ro.qti.sensors.step_detector=false
 
 # camera gyro and laser sensor
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -277,11 +311,6 @@ PRODUCT_PACKAGES += \
     libbt-vendor \
     android.hardware.bluetooth@1.0-impl    \
     android.hardware.bluetooth@1.0-service
-
-# Neuralnetworks HAL
-PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks@1.0-impl-hvx \
-    android.hardware.neuralnetworks@1.0-service-hvx
 
 # DRM HAL
 PRODUCT_PACKAGES += \
@@ -353,7 +382,7 @@ PRODUCT_PACKAGES += \
 
 # Thermal packages
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-service.wahoo
+    android.hardware.thermal@1.1-impl-wahoo
 
 #GNSS HAL
 PRODUCT_PACKAGES += \
@@ -431,10 +460,6 @@ PRODUCT_COPY_FILES += \
 # Pro audio feature
 # PRODUCT_COPY_FILES += \
 #   frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml
-
-# Thermal packages
-PRODUCT_PACKAGES += \
-    thermal.default
 
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
@@ -581,6 +606,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.perfd.enable=true
 
+# Enable Gcam FD Ensemble
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.gcam.fd.ensemble=1
+
 # Preopt SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUIGoogle
+
+# audio effects config
+PRODUCT_PROPERTY_OVERRIDES += \
+    fmas.hdph_sgain=0
