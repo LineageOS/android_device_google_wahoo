@@ -577,6 +577,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ipacm
 
+# Versioned netutils
+PRODUCT_PACKAGES += \
+    netutils-wrapper-1.0
+
 #Set default CDMA subscription to RUIM
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0
