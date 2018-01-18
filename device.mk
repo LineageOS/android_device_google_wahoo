@@ -571,6 +571,11 @@ PRODUCT_PACKAGES += \
     com.android.media.swcodec \
     libsfplugin_ccodec \
 
+# IMS
+PRODUCT_PACKAGES += \
+    PresencePolling \
+    RcsService
+
 # Codec2 switch
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.media.codec2=2 \
