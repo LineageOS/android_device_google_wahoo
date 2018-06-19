@@ -36,6 +36,9 @@ PRODUCT_PACKAGES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/google/wahoo/overlay-lineage
 
+# Setting vendor SPL
+VENDOR_SECURITY_PATCH := "2020-10-05"
+
 # Shared java libs
 PRODUCT_PACKAGES += \
     com.android.nfc_extras
