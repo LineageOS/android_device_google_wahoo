@@ -769,6 +769,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.oem_unlock.pst=/dev/block/platform/soc/1da4000.ufshc/by-name/misc \
     ro.oem_unlock.pst_offset=6144
 
+# Setting vendor SPL
+VENDOR_SECURITY_PATCH := "2020-10-05"
+
 include hardware/google/pixel/vibrator/drv2624/device.mk
 include hardware/google/pixel/mm/device_legacy.mk
 include hardware/google/pixel/thermal/device.mk
