@@ -123,7 +123,10 @@ write_int(char const* path, int value)
     if (fd >= 0) {
         char buffer[20];
         size_t bytes = snprintf(buffer, sizeof(buffer), "%d\n", value);
-        if(bytes >= sizeof(buffer)) return -EINVAL;
+        if (bytes >= sizeof(buffer)) {
+            close(fd);
+            return -EINVAL;
+        }
         ssize_t amt = write(fd, buffer, bytes);
         close(fd);
         return amt == -1 ? -errno : 0;
@@ -146,7 +149,10 @@ write_double_int(char const* path, int value1, int value2)
     if (fd >= 0) {
         char buffer[20];
         size_t bytes = snprintf(buffer, sizeof(buffer), "%d %d\n", value1, value2);
-        if(bytes >= sizeof(buffer)) return -EINVAL;
+        if (bytes >= sizeof(buffer)) {
+            close(fd);
+            return -EINVAL;
+        }
         ssize_t amt = write(fd, buffer, bytes);
         close(fd);
         return amt == -1 ? -errno : 0;
