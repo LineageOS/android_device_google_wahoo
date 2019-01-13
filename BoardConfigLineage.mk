@@ -13,3 +13,6 @@ TARGET_NEEDS_DTBOIMAGE := true
 # Build vendor image
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_PARTITION_SIZE := 524288000
+
+# Manifests
+DEVICE_MANIFEST_FILE += device/google/wahoo/lineage_manifest.xml
