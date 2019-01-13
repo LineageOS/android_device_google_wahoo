@@ -24,6 +24,7 @@ AB_OTA_PARTITIONS += \
     vendor
 
 # Build necessary packages for vendor
+
 PRODUCT_PACKAGES += \
     ese-ls-provision \
     ese-replay \
@@ -50,3 +51,7 @@ PRODUCT_COPY_FILES += \
 # Force triple frame buffers
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
