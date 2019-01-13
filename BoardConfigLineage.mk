@@ -19,6 +19,10 @@ BOARD_PREBUILT_DTBOIMAGE := device/google/wahoo/kernel/$(TARGET_DEVICE)_dtbo.img
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_PARTITION_SIZE := 524288000
 
+# Manifests
+DEVICE_MANIFEST_FILE += device/google/wahoo/lineage_manifest.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/google/wahoo/lineage_compatibility_matrix.xml
+
 # Verified Boot
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
