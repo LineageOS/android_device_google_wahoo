@@ -49,3 +49,7 @@ PRODUCT_COPY_FILES += \
 
 # Google Assistant
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.opa.eligible_device=true
+
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
