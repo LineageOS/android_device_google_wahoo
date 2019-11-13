@@ -11,6 +11,13 @@ PRODUCT_PACKAGES += \
     PresencePolling \
     RcsService
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += device/google/wahoo/overlay-lineage
+
 # Shared java libs
 PRODUCT_PACKAGES += \
     com.android.nfc_extras
+
+# Snap
+PRODUCT_PACKAGES += \
+    Snap
