@@ -14,3 +14,7 @@ PRODUCT_PACKAGES += \
 # Force triple frame buffers
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
+# Snap
+PRODUCT_PACKAGES += \
+    Snap
