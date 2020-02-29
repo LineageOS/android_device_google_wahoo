@@ -42,3 +42,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Setting vendor SPL
 VENDOR_SECURITY_PATCH := "2020-03-05"
+
+# MiFare Permissions file
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml
