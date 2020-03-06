@@ -11,7 +11,6 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := \
     MKDTIMG=$(shell pwd)/prebuilts/misc/$(HOST_OS)-x86/libufdt/mkdtimg
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/google/wahoo
-TARGET_NEEDS_DTBOIMAGE := true
 
 # Build vendor image
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
