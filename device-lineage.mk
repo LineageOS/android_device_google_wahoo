@@ -18,3 +18,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Snap
 PRODUCT_PACKAGES += \
     Snap
+
+# Build vendor img
+AB_OTA_PARTITIONS += \
+    vendor
