@@ -18,3 +18,7 @@ DEVICE_PACKAGE_OVERLAYS += device/google/wahoo/overlay-lineage
 # Snap
 PRODUCT_PACKAGES += \
     Snap
+
+# Build vendor img
+AB_OTA_PARTITIONS += \
+    vendor
