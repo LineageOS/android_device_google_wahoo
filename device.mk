@@ -37,7 +37,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_SOONG_NAMESPACES += \
     device/google/wahoo \
-    vendor/google/camera \
     hardware/google/pixel
 
 PRODUCT_COPY_FILES += \
