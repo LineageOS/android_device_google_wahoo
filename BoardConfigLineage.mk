@@ -1,5 +1,7 @@
 # Common board config for taimen, walleye
 
+WAHOO_PATH := device/google/wahoo
+
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := Image.lz4-dtb
 TARGET_COMPILE_WITH_MSM_KERNEL := true
@@ -9,5 +11,6 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := \
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/google/wahoo
 TARGET_NEEDS_DTBOIMAGE := true
+BOARD_CUSTOM_DTBOIMG_MK := $(WAHOO_PATH)/kernel/dtbo.mk
 
 -include vendor/google/wahoo/BoardConfigVendor.mk
