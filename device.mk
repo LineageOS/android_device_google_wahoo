@@ -748,6 +748,27 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.xml
 
+# Build necessary packages for vendor
+PRODUCT_PACKAGES += \
+    chre \
+    ese-ls-provision \
+    ese-replay \
+    libhidltransport.vendor \
+    libhwbinder.vendor \
+    libjson \
+    libsensorndkbridge:32 \
+    libtinyxml
+
+# Enable missing vendor props
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true \
+    media.mediadrmservice.enable=true \
+    ro.gfx.driver.0=com.google.pixel.wahoo.gfxdrv \
+    ro.hardware.egl=adreno \
+    ro.hardware.vulkan=adreno \
+    ro.oem_unlock.pst=/dev/block/platform/soc/1da4000.ufshc/by-name/misc \
+    ro.oem_unlock.pst_offset=6144
+
 include hardware/google/pixel/vibrator/drv2624/device.mk
 include hardware/google/pixel/mm/device_legacy.mk
 include hardware/google/pixel/thermal/device.mk
