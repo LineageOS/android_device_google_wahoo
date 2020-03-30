@@ -28,8 +28,6 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf /system/lib64/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
-
 DM_LIBS := libdmengine.so libdmjavaplugin.so
 DM_SYMLINKS := $(addprefix $(TARGET_OUT)/priv-app/DMService/lib/arm/,$(notdir $(DM_LIBS)))
 $(DM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
@@ -75,6 +73,6 @@ $(RFS_MSM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
 	$(hide) ln -sf /firmware $@/readonly/firmware
 
-ALL_DEFAULT_INSTALLED_MODULES += $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS) 
+ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS) $(DM_SYMLINKS) $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS) 
 
 endif
