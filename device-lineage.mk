@@ -26,3 +26,7 @@ PRODUCT_PACKAGES += \
 # Build vendor img
 AB_OTA_PARTITIONS += \
     vendor
+
+# ipacm configuration files
+PRODUCT_PACKAGES += \
+    IPACM_cfg.xml
