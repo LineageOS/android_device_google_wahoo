@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "343bccda_e00722f3",
+        "filename": "device-lineage.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7118
+      },
+      "writtenOn": "2020-03-31T20:30:14Z",
+      "side": 1,
+      "message": "since you\u0027re building vendor now, this should go in vendor",
+      "range": {
+        "startLine": 17,
+        "startChar": 68,
+        "endLine": 17,
+        "endChar": 74
+      },
+      "revId": "951d226418f74e47840bf08a74aced3bb612a186",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
