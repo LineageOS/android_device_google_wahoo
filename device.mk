@@ -724,15 +724,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.protected_contents=true
 
-# Early phase offset configuration for SurfaceFlinger
+# Force triple frame buffers
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_phase_offset_ns=1500000
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_app_phase_offset_ns=1500000
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_gl_phase_offset_ns=3000000
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_gl_app_phase_offset_ns=15000000
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
 # Use /product/etc/fstab.postinstall to mount system_other.
 PRODUCT_PRODUCT_PROPERTIES += \
