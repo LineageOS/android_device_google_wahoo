@@ -213,3 +213,6 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.vibr
 
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib/libgptutils.so)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib64/libigptutils.so)
+
+# Use stable aidl power HAL
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.power-service.pixel-libperfmgr.rc)
