@@ -2,6 +2,10 @@
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.xml
 
+# GMS
+PRODUCT_COPY_FILES += \
+    device/google/wahoo/lineage-nogms.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/lineage-nogms.xml
+
 # IMS
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
