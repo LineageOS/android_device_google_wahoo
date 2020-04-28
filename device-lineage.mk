@@ -7,6 +7,9 @@ PRODUCT_PACKAGES += \
     PresencePolling \
     RcsService
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
+
 # Shared java libs
 PRODUCT_PACKAGES += \
     com.android.nfc_extras
