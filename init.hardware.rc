@@ -829,21 +829,6 @@ service vendor.insmod_sh /vendor/bin/init.insmod.sh
     disabled
     oneshot
 
-# b/70518189 vDSO experiments
-on property:sys.vdso=*
-   write /sys/module/vdso/parameters/enable_32 1
-   write /sys/module/vdso/parameters/enable_64 1
-
-on property:sys.vdso=false
-   write /sys/module/vdso/parameters/enable_32 0
-   write /sys/module/vdso/parameters/enable_64 0
-
-on property:sys.vdso=64
-   write /sys/module/vdso/parameters/enable_32 0
-
-on property:sys.vdso=32
-   write /sys/module/vdso/parameters/enable_64 0
-
 # charger driver exposes now finer grain control, map demo mode to those properties
 # demo mode can only be exit wipping data which will also reset the persist properties
 on property:sys.retaildemo.enabled=1
