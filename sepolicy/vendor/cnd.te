@@ -34,3 +34,5 @@ userdebug_or_eng(`
   allow cnd diag_device:chr_file rw_file_perms;
 ')
 dontaudit cnd diag_device:chr_file rw_file_perms;
+
+get_prop(cnd, wifi_hal_prop)
