@@ -36,18 +36,6 @@ $(DM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf /system/product/lib/$(notdir $@) $@
 
-RFS_APQ_GNSS_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/apq/gnss/
-$(RFS_APQ_GNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating RFS APQ GNSS folder structure: $@"
-	@rm -rf $@/*
-	@mkdir -p $(dir $@)/readonly/vendor
-	$(hide) ln -sf /data/vendor/tombstones/rfs/modem $@/ramdumps
-	$(hide) ln -sf /persist/rfs/apq/gnss $@/readwrite
-	$(hide) ln -sf /persist/rfs/shared $@/shared
-	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
-	$(hide) ln -sf /vendor/firmware $@/readonly/vendor/firmware
-
 RFS_MSM_ADSP_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/msm/adsp/
 $(RFS_MSM_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Creating RFS MSM ADSP folder structure: $@"
@@ -83,51 +71,6 @@ $(RFS_MSM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
 	$(hide) ln -sf /firmware $@/readonly/firmware
 
-RFS_MDM_ADSP_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/adsp/
-$(RFS_MDM_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating RFS MDM ADSP folder structure: $@"
-	@rm -rf $@/*
-	@mkdir -p $(dir $@)/readonly/vendor
-	$(hide) ln -sf /data/vendor/tombstones/rfs/lpass $@/ramdumps
-	$(hide) ln -sf /persist/rfs/mdm/adsp $@/readwrite
-	$(hide) ln -sf /persist/rfs/shared $@/shared
-	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
-	$(hide) ln -sf /vendor/firmware $@/readonly/vendor/firmware
-
-RFS_MDM_MPSS_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/mpss/
-$(RFS_MDM_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating RFS MDM MPSS folder structure: $@"
-	@mkdir -p $(dir $@)/readonly/vendor
-	$(hide) ln -sf /data/vendor/tombstones/rfs/modem $@/ramdumps
-	$(hide) ln -sf /persist/rfs/mdm/mpss $@/readwrite
-	$(hide) ln -sf /persist/rfs/shared $@/shared
-	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
-	$(hide) ln -sf /vendor/firmware $@/readonly/vendor/firmware
-
-RFS_MDM_SLPI_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/slpi/
-$(RFS_MDM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating RFS MDM SLPI folder structure: $@"
-	@rm -rf $@/*
-	@mkdir -p $(dir $@)/readonly
-	$(hide) ln -sf /data/vendor/tombstones/rfs/slpi $@/ramdumps
-	$(hide) ln -sf /persist/rfs/mdm/slpi $@/readwrite
-	$(hide) ln -sf /persist/rfs/shared $@/shared
-	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
-
-RFS_MDM_TN_SYMLINKS := $(TARGET_OUT_VENDOR)/rfs/mdm/tn/
-$(RFS_MDM_TN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Creating RFS MDM TN folder structure: $@"
-	@rm -rf $@/*
-	@mkdir -p $(dir $@)/readonly
-	$(hide) ln -sf /data/vendor/tombstones/rfs/tn $@/ramdumps
-	$(hide) ln -sf /persist/rfs/mdm/tn $@/readwrite
-	$(hide) ln -sf /persist/rfs/shared $@/shared
-	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
-	$(hide) ln -sf /firmware $@/readonly/firmware
-
 TAS2557_BIN := tas2557_cal.bin
 TAS2557_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(TAS2557_BIN)))
 $(TAS2557_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
@@ -151,6 +94,6 @@ $(EGL_64_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf egl/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS) $(DM_SYMLINKS) $(RFS_APQ_GNSS_SYMLINKS) $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS) $(RFS_MDM_ADSP_SYMLINKS) $(RFS_MDM_MPSS_SYMLINKS) $(RFS_MDM_SLPI_SYMLINKS) $(RFS_MDM_TN_SYMLINKS) $(TAS2557_SYMLINKS) $(EGL_32_SYMLINKS) $(EGL_64_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS) $(DM_SYMLINKS) $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS) $(TAS2557_SYMLINKS) $(EGL_32_SYMLINKS) $(EGL_64_SYMLINKS)
 
 endif
