@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32ebe17a_ab85d4d7",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2020-08-19T23:22:01Z",
+      "side": 1,
+      "message": "Being at the top would be opposite of this though, bottom is where you\u0027d want it to override.",
+      "revId": "feb236854a1465882df019bf7e59d7af49c7d12b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
