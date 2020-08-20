@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Allow Lineage config to override others
--include device/google/wahoo/BoardConfigLineage.mk
-
 TARGET_BOARD_PLATFORM := msm8998
 
 TARGET_ARCH := arm64
@@ -171,3 +168,6 @@ BOARD_VNDK_VERSION := current
 
 # Generate an APEX image for experiment b/119800099.
 DEXPREOPT_GENERATE_APEX_IMAGE := true
+
+# Allow Lineage config to override others
+-include device/google/wahoo/BoardConfigLineage.mk
