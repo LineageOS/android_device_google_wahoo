@@ -31,6 +31,10 @@ PRODUCT_PACKAGES += \
     libsensorndkbridge:32 \
     libtinyxml
 
+# Brotli
+PRODUCT_PACKAGES += \
+    libbrotli:64
+
 # Add missing vendor props
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true \
