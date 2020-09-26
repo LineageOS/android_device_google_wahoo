@@ -258,6 +258,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.sap_silent_pin=1 \
     persist.radio.sib16_support=1 \
     persist.radio.data_con_rprt=true \
+    persist.vendor.radio.mt_sms_ack=30 \
     persist.radio.always_send_plmn=false\
     persist.rcs.supported=1
 
