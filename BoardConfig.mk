@@ -180,3 +180,5 @@ AB_OTA_PARTITIONS += \
     system \
     vbmeta \
     dtbo
+
+BUILD_BROKEN_ENFORCE_SYSPROP_OWNER := true
