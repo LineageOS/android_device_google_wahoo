@@ -45,6 +45,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml
 
+# Namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/google/interfaces
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/google/wahoo/overlay-lineage
 
