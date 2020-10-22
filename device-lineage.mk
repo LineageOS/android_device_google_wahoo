@@ -21,3 +21,7 @@ DEVICE_PACKAGE_OVERLAYS += device/google/wahoo/overlay-lineage
 # Shared java libs
 PRODUCT_PACKAGES += \
     com.android.nfc_extras
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/google/interfaces
