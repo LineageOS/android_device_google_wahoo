@@ -391,7 +391,7 @@ PRODUCT_COPY_FILES += \
     device/google/wahoo/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf \
 
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.2-service.wahoo
+    android.hardware.usb@1.3-service.wahoo
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
