@@ -1,3 +1,7 @@
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 # Elmyra
 PRODUCT_PACKAGES += \
     ElmyraService
