@@ -47,6 +47,10 @@ PRODUCT_PACKAGES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/google/wahoo/overlay-lineage
 
+# Parts
+PRODUCT_PACKAGES += \
+    GoogleParts
+
 # Setting vendor SPL
 VENDOR_SECURITY_PATCH := "2020-10-05"
 
