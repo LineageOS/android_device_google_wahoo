@@ -54,6 +54,10 @@ VENDOR_SECURITY_PATCH := "2020-10-05"
 PRODUCT_PACKAGES += \
     com.android.nfc_extras
 
+# Parts
+PRODUCT_PACKAGES += \
+    GoogleParts
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces
