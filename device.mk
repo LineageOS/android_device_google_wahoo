@@ -329,7 +329,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     hwcomposer.msm8998 \
-    android.hardware.graphics.composer@2.1-impl:64 \
     android.hardware.graphics.composer@2.1-service \
     gralloc.msm8998 \
     android.hardware.graphics.allocator@2.0-impl:64 \
