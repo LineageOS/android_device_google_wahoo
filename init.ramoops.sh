@@ -14,9 +14,9 @@ fi
 setprop vendor.ramoops.decrypted true
 
 # Generate keys (if none exist), and load the keys to carveout
-if [[ $(getprop ro.hardware) == "walleye" ]]; then
-    ramoops -g -l -c
-else
+if [[ $(getprop ro.hardware) == "taimen" ]]; then
     ramoops -g -l
+else
+    ramoops -g -l -c
 fi
 
