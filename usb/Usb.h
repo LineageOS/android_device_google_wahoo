@@ -44,8 +44,8 @@ using ::android::hidl::base::V1_0::IBase;
 constexpr char kGadgetName[] = "a800000.dwc3";
 #define PULLUP_PATH "/config/usb_gadget/g1/UDC"
 #define SOC_PATH "/sys/devices/platform/soc/a800000.ssusb/"
-#define VBUS_PATH SOC_PATH "id"
-#define ID_PATH SOC_PATH "b_sess"
+#define ID_PATH SOC_PATH "id"
+#define VBUS_PATH SOC_PATH "b_sess"
 #define USB_DATA_PATH SOC_PATH "usb_data_enabled"
 
 enum class HALVersion { V1_0, V1_1, V1_2, V1_3 };
