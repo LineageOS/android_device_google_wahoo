@@ -476,6 +476,10 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     WifiOverlay
 
+# Connectivity
+PRODUCT_PACKAGES += \
+    ConnectivityOverlay
+
 # Audio effects
 PRODUCT_PACKAGES += \
     libvolumelistener \
