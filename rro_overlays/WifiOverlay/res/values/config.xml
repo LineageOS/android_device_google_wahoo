@@ -78,4 +78,7 @@
     <!-- Boolean indicating whether framework needs to set the tx power limit for meeting SAR
          requirements -->
     <bool translatable="false" name="config_wifi_framework_enable_sar_tx_power_limit">true</bool>
+
+    <!-- Whether to use the explicit vendor HAL API: IWifiStaIface.setRoamingState for disabling fw roaming. -->
+    <bool translatable="false" name="config_wifiUseHalApiToDisableFwRoaming">true</bool>
 </resources>
