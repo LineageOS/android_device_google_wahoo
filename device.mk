@@ -510,7 +510,8 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@6.0-impl:32 \
     android.hardware.soundtrigger@2.2-impl:32 \
     android.hardware.bluetooth.audio@2.0-impl \
-    android.hardware.audio@2.0-service
+    android.hardware.audio@2.0-service \
+    libldacBT_bco
 
 # stereo speakers: orientation changes swap L/R channels
 PRODUCT_PROPERTY_OVERRIDES += \
