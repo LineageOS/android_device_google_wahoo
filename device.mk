@@ -808,6 +808,11 @@ PRODUCT_PACKAGES += \
 # Setting vendor SPL
 VENDOR_SECURITY_PATCH := "2020-10-05"
 
+# SOC
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.soc.manufacturer=Qualcomm \
+    ro.soc.model=MSM8998
+
 # Task profiles
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/task_profiles/cgroups_26.json:$(TARGET_COPY_OUT_SYSTEM)/etc/task_profiles/cgroups_26.json \
