@@ -17,6 +17,10 @@
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+# Disable APEX compression
+# Keep this after including updatable_apex.mk
+PRODUCT_COMPRESSED_APEX := false
+
 ifneq (,$(filter 27, $(PRODUCT_EXTRA_VNDK_VERSIONS)))
     _vndk_test := true
 endif
