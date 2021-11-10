@@ -201,11 +201,19 @@ PRODUCT_COPY_FILES += \
 
 # power.stats HAL
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0.vendor \
     android.hardware.power.stats@1.0-service.pixel
 
 # health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.wahoo
+
+# Radio Hal
+PRODUCT_PACKAGES += \
+    android.hardware.radio@1.1.vendor \
+    android.hardware.radio.config@1.0 \
+    librmnetctl \
+    libxml2
 
 # Audio fluence, ns, aec property, voice and media volume steps
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -361,6 +369,7 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth HAL
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0.vendor \
     android.hardware.bluetooth@1.0-impl-qti:64 \
     android.hardware.bluetooth@1.0-service-qti \
     android.hardware.bluetooth@1.0-service-qti.rc
@@ -380,6 +389,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # DRM HAL
 PRODUCT_PACKAGES += \
+    android.hardware.drm@1.1.vendor \
+    android.hardware.drm@1.2.vendor \
+    android.hardware.drm@1.3.vendor \
     android.hardware.drm@1.0-impl:32 \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.3-service.clearkey \
@@ -511,7 +523,9 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl:32 \
     android.hardware.audio.effect@6.0-impl:32 \
     android.hardware.soundtrigger@2.2-impl:32 \
+    android.hardware.bluetooth.a2dp@1.0.vendor \
     android.hardware.bluetooth.audio@2.0-impl \
+    android.hardware.bluetooth.audio@2.1.vendor \
     android.hardware.audio@2.0-service \
     libldacBT_bco
 
@@ -571,6 +585,7 @@ PRODUCT_COPY_FILES += \
 
 # Codec2 modules
 PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.1.vendor \
     com.android.media.swcodec \
     libsfplugin_ccodec \
 
@@ -591,12 +606,44 @@ PRODUCT_COPY_FILES += \
 
 # Fingerprint HIDL implementation
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.fpc
+    android.frameworks.stats@1.0.vendor \
+    android.hardware.biometrics.fingerprint@2.1.vendor \
+    android.hardware.biometrics.fingerprint@2.2.vendor
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.fingerprint.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.fingerprint.sh \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
+
+# Display
+PRODUCT_PACKAGES += \
+    android.frameworks.displayservice@1.0.vendor
+
+# GNSS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0.vendor
+
+# WiFi
+PRODUCT_PACKAGES += \
+    android.system.net.netd@1.1.vendor \
+    netutils-wrapper-1.0
+
+# Keymaster HAL
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0.vendor
+
+# Gatekeeper HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0.vendor
+
+# Neural Network
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.3.vendor
+
+# OEMLock
+PRODUCT_PACKAGES += \
+    android.hardware.oemlock@1.0.vendor
 
 # GPS configuration file
 PRODUCT_COPY_FILES += \
@@ -753,6 +800,7 @@ PRODUCT_COPY_FILES += \
 
 # Build necessary packages for vendor
 PRODUCT_PACKAGES += \
+    android.hidl.safe_union@1.0.vendor \
     chre \
     ese-ls-provision \
     ese-replay \
