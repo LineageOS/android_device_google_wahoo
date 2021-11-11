@@ -216,7 +216,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.1.vendor \
     android.hardware.radio.config@1.0 \
-    librmnetctl \
     libxml2
 
 # Audio fluence, ns, aec property, voice and media volume steps
@@ -373,10 +372,7 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth HAL
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0.vendor \
-    android.hardware.bluetooth@1.0-impl-qti:64 \
-    android.hardware.bluetooth@1.0-service-qti \
-    android.hardware.bluetooth@1.0-service-qti.rc
+    android.hardware.bluetooth@1.0.vendor
 
 # Bluetooth SoC
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -398,9 +394,7 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.3.vendor \
     android.hardware.drm@1.0-impl:32 \
     android.hardware.drm@1.0-service \
-    android.hardware.drm@1.4-service.clearkey \
-    android.hardware.drm@1.3-service.widevine \
-    move_widevine_data.sh
+    android.hardware.drm@1.4-service.clearkey
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -423,7 +417,6 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libstagefrighthw \
     libOmxVdec \
-    libOmxVdecHevc \
     libOmxVenc \
     libc2dcolorconvert
 
@@ -442,7 +435,6 @@ PRODUCT_PACKAGES_ENG += \
     libgoogle_camera_hal_tests.vendor
 
 PRODUCT_PACKAGES += \
-    sensors.$(PRODUCT_HARDWARE) \
     android.hardware.sensors@1.0-impl:64 \
     android.hardware.sensors@1.0-service \
     android.frameworks.sensorservice@1.0 \
@@ -488,7 +480,6 @@ HOSTAPD += hostapd_cli
 PRODUCT_PACKAGES += $(HOSTAPD)
 
 WPA := wpa_supplicant.conf
-WPA += wpa_supplicant_wcn.conf
 WPA += wpa_supplicant
 PRODUCT_PACKAGES += $(WPA)
 
@@ -502,9 +493,6 @@ PRODUCT_PACKAGES += \
     wificond \
     libwpa_client \
     WifiOverlay
-
-LIB_NL := libnl_2
-PRODUCT_PACKAGES += $(LIB_NL)
 
 # Audio effects
 PRODUCT_PACKAGES += \
