@@ -8,3 +8,6 @@ binder_call(dataservice_app, cnd)
 binder_call(dataservice_app, hal_rcsservice)
 
 allow dataservice_app cgroup:file w_file_perms;
+allow dataservice_app system_data_file:dir search;
+
+r_dir_file(dataservice_app, user_profile_root_file)
