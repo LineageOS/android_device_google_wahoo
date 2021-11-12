@@ -30,9 +30,6 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 endif
 PRODUCT_ACTIONABLE_COMPATIBLE_PROPERTY_DISABLE := true
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    keyguard.no_require_sim=true
-
 PRODUCT_SOONG_NAMESPACES += \
     device/google/wahoo \
     vendor/google/camera \
@@ -50,10 +47,6 @@ PRODUCT_COPY_FILES += \
 # Set the SVN for the targeted MR release
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.svn=52
-
-# Enforce privapp-permissions whitelist
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.control_privapp_permissions=enforce
 
 PRODUCT_PACKAGES += \
     messaging
