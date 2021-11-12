@@ -124,12 +124,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_PACKAGES += \
     update_engine_sideload
 
-# The following modules are included in debuggable builds only.
-PRODUCT_PACKAGES_DEBUG += \
-    a_sns_test \
-    bootctl \
-    update_engine_client
-
 # Write flags to the vendor space in /misc partition.
 PRODUCT_PACKAGES += \
     misc_writer
@@ -405,11 +399,6 @@ PRODUCT_PACKAGES += \
     libqomx_core \
     libmmjpeg_interface \
     libmmcamera_interface
-
-# Google Camera HAL test libraries in debug builds
-PRODUCT_PACKAGES_DEBUG += \
-    libgoogle_camera_hal_proprietary_tests \
-    libgoogle_camera_hal_tests.vendor
 
 PRODUCT_PACKAGES += \
     sensors.$(PRODUCT_HARDWARE) \
