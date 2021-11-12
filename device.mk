@@ -51,10 +51,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     messaging
 
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += chre_test_client
-endif
-
 LOCAL_PATH := device/google/wahoo
 
 SRC_MEDIA_HAL_DIR := hardware/qcom/media/msm8998
@@ -105,15 +101,8 @@ else
     $(LOCAL_PATH)/init.hardware.xr.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_HARDWARE).rc
 endif
 
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-  PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/init.hardware.diag.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).diag.rc
-  PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/init.hardware.chamber.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).chamber.rc
-else
   PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/init.hardware.diag.rc.user:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).diag.rc
-endif
 
 MSM_VIDC_TARGET_LIST := msm8998 # Get the color format from kernel headers
 MASTER_SIDE_CP_TARGET_LIST := msm8998 # ION specific settings
@@ -484,10 +473,6 @@ WPA += wpa_supplicant_wcn.conf
 WPA += wpa_supplicant
 PRODUCT_PACKAGES += $(WPA)
 
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += wpa_cli
-endif
-
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
@@ -539,19 +524,6 @@ PRODUCT_COPY_FILES += \
 # Audio low latency feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml
-
-# Pro audio feature
-# PRODUCT_COPY_FILES += \
-#   frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml
-
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += \
-    tinyplay \
-    tinycap \
-    tinymix \
-    tinypcminfo \
-    cplay
-endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
@@ -653,12 +625,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml
 
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-# Subsystem ramdump
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.ssr.enable_ramdumps=1
-endif
-
 # Subsystem silent restart
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=modem,slpi,adsp
@@ -672,16 +638,6 @@ PRODUCT_COPY_FILES += \
 # Use the default charger mode images
 PRODUCT_PACKAGES += \
     charger_res_images
-
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-# b/36703476: Set default log size to 1M
-PRODUCT_PROPERTY_OVERRIDES += \
-  ro.logd.size=1M
-# b/114766334: persist all logs by default rotating on 30 files of 1MiB
-PRODUCT_PROPERTY_OVERRIDES += \
-  logd.logpersistd=logcatd \
-  logd.logpersistd.size=30
-endif
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
@@ -756,12 +712,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # NFC/camera interaction workaround - DO NOT COPY TO NEW DEVICES
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.notify_nfc=1
-
-# default usb oem functions
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-  PRODUCT_PROPERTY_OVERRIDES += \
-      persist.vendor.usb.usbradio.config=diag
-endif
 
 # Vibrator HAL
 PRODUCT_PROPERTY_OVERRIDES += \
