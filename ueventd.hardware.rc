@@ -108,5 +108,8 @@
 /dev/easelcomm-client     0666   cameraserver camera
 /dev/mnh_sm               0666   cameraserver camera
 
+# KGSL
+/sys/class/kgsl/kgsl-3d0    perfcounter              0660    root    shell
+
 # Storage: for factory reset protection feature
 /dev/block/platform/soc/1da4000.ufshc/by-name/frp       0660   system     system
