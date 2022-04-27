@@ -57,12 +57,6 @@ SRC_CAMERA_HAL_DIR := hardware/qcom/camera/msm8998
 
 TARGET_SYSTEM_PROP := $(TARGET_SYSTEM_PROP) $(LOCAL_PATH)/system.prop
 
-# Kernel
-BOARD_KERNEL_IMAGE_NAME := Image.lz4-dtb
-TARGET_COMPILE_WITH_MSM_KERNEL := true
-TARGET_KERNEL_SOURCE := kernel/google/wahoo
-TARGET_NEEDS_DTBOIMAGE := true
-
 $(call inherit-product, device/google/wahoo/utils.mk)
 
 PRODUCT_CHARACTERISTICS := nosdcard
