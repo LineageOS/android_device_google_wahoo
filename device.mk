@@ -351,7 +351,7 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0.vendor
 
 # Bluetooth Properties
-PRODUCT_PRODUCT_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.profile.asha.central.enabled=true \
     bluetooth.profile.a2dp.source.enabled=true \
     bluetooth.profile.avrcp.target.enabled=true \
