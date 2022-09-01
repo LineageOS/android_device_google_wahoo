@@ -402,6 +402,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.1-service.wahoo
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.usb.rmnet.func.name=rmnet_bam \
+    vendor.usb.rmnet.inst.name=rmnet \
+    vendor.usb.rndis.func.name=rndis_bam
+
 PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxCore \
