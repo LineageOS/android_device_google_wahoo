@@ -111,7 +111,6 @@ TARGET_FS_CONFIG_GEN := device/google/wahoo/config.fs
 QCOM_BOARD_PLATFORMS += msm8998
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_USES_SDM845_BLUETOOTH_HAL := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/google/wahoo/bluetooth
 
 # Camera
 TARGET_USES_AOSP := true
