@@ -454,7 +454,6 @@ PRODUCT_PACKAGES += \
 
 #GNSS HAL
 PRODUCT_PACKAGES += \
-    gps.conf \
     libgps.utils \
     libgnss \
     liblocation_api \
