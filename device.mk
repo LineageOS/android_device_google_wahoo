@@ -251,7 +251,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.data_con_rprt=true \
     persist.vendor.radio.mt_sms_ack=30 \
     persist.radio.always_send_plmn=false\
-    persist.rcs.supported=1
+    persist.rcs.supported=1 \
+    ro.telephony.block_binder_thread_on_incoming_calls=false
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
