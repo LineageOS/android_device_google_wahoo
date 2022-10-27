@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701f576f_42a4829a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3917
+      },
+      "writtenOn": "2022-10-27T20:30:49Z",
+      "side": 1,
+      "message": "There is no perfcounter sysfs node on our kernel. \n\nThis was introduced with \"msm: kgsl: Add a sysfs node to control performance counter reads\" - which I see on google kernels starting 4.14.",
+      "revId": "da4379d2443fe8c6e69f6f43f88f5987602551ce",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
