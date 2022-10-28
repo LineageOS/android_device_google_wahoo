@@ -16,6 +16,24 @@
       "message": "why upgrading if we drop it in next commit?",
       "revId": "4c821c1f9727f303812e59bba9844c243eb934af",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29af0297_f0c3050b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-10-28T03:10:23Z",
+      "side": 1,
+      "message": "Lineage peeps seem to care about the history. I don\u0027t get it, but it\u0027s harmless.",
+      "parentUuid": "c8dd83a6_e85376b3",
+      "revId": "4c821c1f9727f303812e59bba9844c243eb934af",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
