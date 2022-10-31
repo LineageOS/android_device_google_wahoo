@@ -39,6 +39,9 @@ persist.timed.enable=true
 # System prop to turn on CdmaLTEPhone always
 telephony.lteOnCdmaDevice=1
 
+# Legacy IMS Binder Block
+ro.telephony.block_binder_thread_on_incoming_calls=false
+
 # Simulate sdcard on /data/media
 persist.fuse_sdcard=true
 
