@@ -387,13 +387,9 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    NfcNci \
     Tag \
     android.hardware.nfc@1.1-service \
     com.android.nfc_extras
-
-PRODUCT_PACKAGES += \
-    SecureElement
 
 PRODUCT_COPY_FILES += \
     device/google/wahoo/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf \
