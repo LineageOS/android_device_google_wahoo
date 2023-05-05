@@ -48,3 +48,6 @@ userdebug_or_eng(`
 ')
 
 get_prop(location, wifi_hal_prop)
+
+# xtra-daemon control
+get_prop(location, xtra_control_prop)

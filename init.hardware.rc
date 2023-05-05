@@ -675,6 +675,9 @@ service vendor.loc_launcher /vendor/bin/loc_launcher
     class late_start
     group gps inet diag wifi
 
+on property:persist.sys.xtra-daemon.enabled=*
+    restart vendor.loc_launcher
+
 service vendor.pd_mapper /vendor/bin/pd-mapper
      class core
 
