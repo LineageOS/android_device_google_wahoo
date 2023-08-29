@@ -33,8 +33,6 @@ TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
 
 # BUILD_BROKEN_*
-# Needed for /vendor/lib/dsp libraries
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 # Android.mk symlinks
 BUILD_BROKEN_INCORRECT_PARTITION_IMAGES := true
 
