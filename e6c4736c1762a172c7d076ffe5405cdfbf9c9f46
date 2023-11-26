@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fd952a4_2a81e28a",
+        "filename": "device.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 14403
+      },
+      "writtenOn": "2023-11-26T15:38:41Z",
+      "side": 1,
+      "message": "Hi.\nThis call is wrong with PRODUCT_COPY_FILES , you need to add $(TARGET_COPY_OUT_RECOVERY)/root instead.\nregards",
+      "revId": "e6c4736c1762a172c7d076ffe5405cdfbf9c9f46",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
