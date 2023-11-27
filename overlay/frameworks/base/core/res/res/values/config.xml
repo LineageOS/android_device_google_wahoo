@@ -320,10 +320,6 @@
     <!-- Whether Hearing Aid profile is supported -->
     <bool name="config_hearing_aid_profile_supported">true</bool>
 
-    <!-- List of comma separated package names for which we the system will not show crash, ANR,
-         etc. dialogs. -->
-    <string translatable="false" name="config_appsNotReportingCrashes">com.google.android.euicc</string>
-
     <string-array name="config_nightDisplayColorTemperatureCoefficients">
         <!-- R a-coefficient --> <item>0.0</item>
         <!-- R b-coefficient --> <item>0.0</item>
