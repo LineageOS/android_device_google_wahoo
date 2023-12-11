@@ -210,6 +210,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.egl=adreno \
     ro.opengles.version=196610
 
 # b/73640835
