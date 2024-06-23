@@ -33,6 +33,9 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
 
+# Add common definitions for Qualcomm
+$(call inherit-product, hardware/qcom-caf/common/common.mk)
+
 # Set the SVN for the targeted MR release
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.svn=52
