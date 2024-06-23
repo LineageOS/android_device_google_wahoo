@@ -140,9 +140,6 @@ AUDIO_FEATURE_ENABLED_USB_TUNNEL := true
 BOARD_ROOT_EXTRA_SYMLINKS := /vendor/dsp/sdsp:/dsp
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 
-# Include whaoo modules
-USES_DEVICE_GOOGLE_WAHOO := true
-
 # Graphics
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
