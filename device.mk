@@ -75,10 +75,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.insmod.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.insmod.sh \
     $(LOCAL_PATH)/init.ramoops.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.ramoops.sh
 
-# Ramoops
-PRODUCT_PACKAGES += \
-    libcrypto_utils.vendor
-
 ifeq (,$(filter %_xr,$(TARGET_PRODUCT)))
   PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.hardware.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_HARDWARE).rc
@@ -180,7 +176,6 @@ PRODUCT_COPY_FILES += \
 
 # power.stats HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0.vendor \
     android.hardware.power.stats@1.0-service.pixel
 
 # health HAL
@@ -190,10 +185,8 @@ PRODUCT_PACKAGES += \
 
 # Radio Hal
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.1.vendor \
     android.hardware.radio.config@1.0 \
-    android.hardware.radio@1.4-service.legacy \
-    libxml2
+    android.hardware.radio@1.4-service.legacy
 
 # Audio fluence, ns, aec property, voice and media volume steps
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -342,10 +335,6 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service
 
-# Bluetooth HAL
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0.vendor
-
 # Bluetooth Properties
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.device.class_of_device=90,2,12 \
@@ -380,10 +369,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # DRM HAL
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.3.vendor \
-    android.hardware.drm-service.clearkey \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat
+    android.hardware.drm-service.clearkey
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -410,7 +396,6 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
     camera.device@3.2-impl \
     camera.msm8998 \
-    libion.vendor:32 \
     libqomx_core \
     libmmjpeg_interface \
     libmmcamera_interface
@@ -421,10 +406,8 @@ PRODUCT_PACKAGES_ENG += \
     libgoogle_camera_hal_tests.vendor
 
 PRODUCT_PACKAGES += \
-    android.frameworks.sensorservice@1.0.vendor \
     android.hardware.sensors@1.0-impl:64 \
-    android.hardware.sensors@1.0-service \
-    libpower.vendor
+    android.hardware.sensors@1.0-service
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sensors/hals.conf:vendor/etc/sensors/hals.conf
@@ -454,7 +437,6 @@ PRODUCT_PACKAGES += \
     libgps.utils \
     libgnss \
     liblocation_api \
-    libsqlite.vendor \
     android.hardware.gnss@1.0-impl-qti \
     android.hardware.gnss@1.0-service-qti
 
@@ -561,15 +543,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
     $(LOCAL_PATH)/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
 
-# Codec2 modules
-PRODUCT_PACKAGES += \
-    android.hardware.media.c2@1.1.vendor \
-    com.android.media.swcodec \
-    libsfplugin_ccodec \
-
 # IMS
 PRODUCT_PACKAGES += \
-    libnetutils.vendor \
     PresencePolling \
     RcsService
 
@@ -584,44 +559,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf
 
 # Fingerprint HIDL implementation
-PRODUCT_PACKAGES += \
-    android.frameworks.stats@1.0.vendor \
-    android.hardware.biometrics.fingerprint@2.1.vendor \
-    android.hardware.biometrics.fingerprint@2.2.vendor
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.fingerprint.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.fingerprint.sh \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
-
-# Display
-PRODUCT_PACKAGES += \
-    android.frameworks.displayservice@1.0.vendor
-
-# GNSS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0.vendor
-
-# WiFi
-PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor
-
-# Keymaster HAL
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0.vendor
-
-# Gatekeeper HAL
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0.vendor
-
-# Neural Network
-PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks@1.3.vendor
-
-# OEMLock
-PRODUCT_PACKAGES += \
-    android.hardware.oemlock@1.0.vendor
 
 # GPS configuration file
 PRODUCT_COPY_FILES += \
@@ -773,15 +715,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Build necessary packages for vendor
 PRODUCT_PACKAGES += \
-    android.hidl.safe_union@1.0.vendor \
     chre_daemon_msm \
     ese-ls-provision \
-    ese-replay \
-    libhidltransport.vendor \
-    libhwbinder.vendor \
-    libjson \
-    libsensorndkbridge:32 \
-    libtinyxml
+    ese-replay
 
 # Enable missing vendor props
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -792,11 +728,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.vulkan=adreno \
     ro.oem_unlock.pst=/dev/block/platform/soc/1da4000.ufshc/by-name/misc \
     ro.oem_unlock.pst_offset=6144
-
-# Build necessary packages for system
-PRODUCT_PACKAGES += \
-    libhidltransport \
-    libhwbinder
 
 # Setting vendor SPL
 VENDOR_SECURITY_PATCH := 2020-10-05
