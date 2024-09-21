@@ -415,6 +415,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
     camera.device@3.2-impl \
     camera.msm8998 \
+    libion.vendor:32 \
     libqomx_core \
     libmmjpeg_interface \
     libmmcamera_interface
