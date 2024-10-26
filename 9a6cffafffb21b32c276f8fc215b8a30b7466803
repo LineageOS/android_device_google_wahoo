@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d95d5ad_528e2baa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-10-26T03:54:19Z",
+      "side": 1,
+      "message": "Used authorship, diff change-id, as it\u0027s not the same as the original one.",
+      "revId": "9a6cffafffb21b32c276f8fc215b8a30b7466803",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": []
 }
