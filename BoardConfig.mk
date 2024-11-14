@@ -175,8 +175,6 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     vendor/lineage/config/device_framework_matrix.xml
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
-BOARD_VNDK_VERSION := current
-
 # Board uses A/B OTA.
 AB_OTA_UPDATER := true
 
