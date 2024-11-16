@@ -680,18 +680,6 @@ on property:persist.sys.xtra-daemon.enabled=*
 service vendor.pd_mapper /vendor/bin/pd-mapper
      class core
 
-service vendor.atfwd /vendor/bin/ATFWD-daemon
-    class late_start
-    user system
-    group system radio
-    disabled
-
-on property:persist.radio.atfwd.start=true
-    start vendor.atfwd
-
-on property:persist.radio.atfwd.start=false
-    stop vendor.atfwd
-
 # b/68982314
 on property:sys.uidcpupower=*
    write /proc/uid_cpupower/enable 1
