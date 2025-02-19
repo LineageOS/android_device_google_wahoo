@@ -25,7 +25,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel \
     hardware/qcom/data/ipacfg-mgr/msm8998 \
     hardware/qcom/msm8998 \
-    hardware/qcom/wlan/legacy
+    hardware/qcom/wlan/legacy \
+    hardware/qcom-caf/bootctrl
 
 PRODUCT_COPY_FILES += \
     device/google/wahoo/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml \
@@ -108,10 +109,6 @@ PRODUCT_PACKAGES += \
     cppreopts.sh \
     update_engine \
     update_verifier
-
-PRODUCT_PACKAGES += \
-    bootctrl.msm8998 \
-    bootctrl.msm8998.recovery
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cp_system_other_odex=1
@@ -446,9 +443,8 @@ PRODUCT_PACKAGES += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl:64 \
-    android.hardware.boot@1.0-impl.recovery:64 \
-    android.hardware.boot@1.0-service \
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery
 
 #GNSS HAL
 PRODUCT_PACKAGES += \
