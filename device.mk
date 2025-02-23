@@ -33,6 +33,27 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
 
+# Symlinks
+PRODUCT_PACKAGES += \
+    rfs_msm_adsp_hlos_legacy_symlink \
+    rfs_msm_adsp_ramdumps_legacy_symlink \
+    rfs_msm_adsp_readonly_firmware_legacy_symlink \
+    rfs_msm_adsp_readonly_vendor_firmware_legacy_symlink \
+    rfs_msm_adsp_readwrite_legacy_symlink \
+    rfs_msm_adsp_shared_legacy_symlink \
+    rfs_msm_mpss_hlos_legacy_symlink \
+    rfs_msm_mpss_ramdumps_legacy_symlink \
+    rfs_msm_mpss_readonly_firmware_legacy_symlink \
+    rfs_msm_mpss_readonly_mbn_legacy_symlink \
+    rfs_msm_mpss_readonly_vendor_firmware_legacy_symlink \
+    rfs_msm_mpss_readwrite_legacy_symlink \
+    rfs_msm_mpss_shared_legacy_symlink \
+    rfs_msm_slpi_hlos_legacy_symlink \
+    rfs_msm_slpi_ramdumps_legacy_symlink \
+    rfs_msm_slpi_readonly_firmware_legacy_symlink \
+    rfs_msm_slpi_readwrite_legacy_symlink \
+    rfs_msm_slpi_shared_legacy_symlink
+
 # Set the SVN for the targeted MR release
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.svn=52
