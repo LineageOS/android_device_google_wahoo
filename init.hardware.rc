@@ -121,39 +121,39 @@ on init
 on fs
     mount_all /vendor/etc/fstab.${ro.hardware} --early
 
-    mkdir /persist/data 0700 system system
-    mkdir /persist/display 0770 system graphics
-    mkdir /persist/rfs 0770 root system
-    mkdir /persist/hlos_rfs 0770 root system
-    mkdir /persist/elabel 0700 system system
-    chmod 0770 /persist/rfs
-    chmod 0770 /persist/rfs/shared
-    chmod 0770 /persist/rfs/msm
-    chmod 0770 /persist/rfs/msm/adsp
-    chown system system /persist/rfs/msm/adsp
-    chmod 0770 /persist/rfs/msm/mpss
-    chown system system /persist/rfs/msm/mpss
-    mkdir /persist/rfs/msm/slpi 0770 system system
-    chmod 0770 /persist/rfs/mdm
-    chmod 0770 /persist/rfs/mdm/adsp
-    chown system system /persist/rfs/mdm/adsp
-    chmod 0770 /persist/rfs/mdm/mpss
-    chown system system /persist/rfs/mdm/mpss
-    mkdir /persist/rfs/mdm/slpi 0770 system system
-    chmod 0770 /persist/rfs/mdm/sparrow
-    chown system system /persist/rfs/mdm/sparrow
-    mkdir /persist/rfs/mdm/tn 0770 system system
-    chmod 0770 /persist/rfs/apq
-    chmod 0770 /persist/rfs/apq/gnss
-    chmod 0770 /persist/hlos_rfs
+    mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/display 0770 system graphics
+    mkdir /mnt/vendor/persist/rfs 0770 root system
+    mkdir /mnt/vendor/persist/hlos_rfs 0770 root system
+    mkdir /mnt/vendor/persist/elabel 0700 system system
+    chmod 0770 /mnt/vendor/persist/rfs
+    chmod 0770 /mnt/vendor/persist/rfs/shared
+    chmod 0770 /mnt/vendor/persist/rfs/msm
+    chmod 0770 /mnt/vendor/persist/rfs/msm/adsp
+    chown system system /mnt/vendor/persist/rfs/msm/adsp
+    chmod 0770 /mnt/vendor/persist/rfs/msm/mpss
+    chown system system /mnt/vendor/persist/rfs/msm/mpss
+    mkdir /mnt/vendor/persist/rfs/msm/slpi 0770 system system
+    chmod 0770 /mnt/vendor/persist/rfs/mdm
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/adsp
+    chown system system /mnt/vendor/persist/rfs/mdm/adsp
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/mpss
+    chown system system /mnt/vendor/persist/rfs/mdm/mpss
+    mkdir /mnt/vendor/persist/rfs/mdm/slpi 0770 system system
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/sparrow
+    chown system system /mnt/vendor/persist/rfs/mdm/sparrow
+    mkdir /mnt/vendor/persist/rfs/mdm/tn 0770 system system
+    chmod 0770 /mnt/vendor/persist/rfs/apq
+    chmod 0770 /mnt/vendor/persist/rfs/apq/gnss
+    chmod 0770 /mnt/vendor/persist/hlos_rfs
 
     # b/78019660 Remove unlabeled persist_rfs_file
-    rm /persist/rfs/msm/mpss/server_check.txt
+    rm /mnt/vendor/persist/rfs/msm/mpss/server_check.txt
 
     # for android.hardware.health@2.0-service.marlin cycle count backup
-    mkdir /persist/battery 0700 system system
+    mkdir /mnt/vendor/persist/battery 0700 system system
 
-    restorecon_recursive /persist
+    restorecon_recursive /mnt/vendor/persist
 
 on late-fs
     # Start devices by sysfs trigger
@@ -173,7 +173,7 @@ on late-fs
     mount_all /vendor/etc/fstab.${ro.hardware} --late
 
     # Required for time_daemon
-    mkdir /persist/time 0770 system system
+    mkdir /mnt/vendor/persist/time 0770 system system
 
     # Start time daemon early so that the system time can be set early
     start vendor.time_daemon
@@ -243,10 +243,10 @@ on zygote-start
     chown dhcp dhcp /data/misc/dhcp
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
-    # We chown/chmod /persist again so because mount is run as root + defaults
-    chown root system /persist
-    chmod 0771 /persist
-    chown system system /persist/WCNSS_qcom_wlan_nv.bin
+    # We chown/chmod /mnt/vendor/persist again so because mount is run as root + defaults
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    chown system system /mnt/vendor/persist/WCNSS_qcom_wlan_nv.bin
 
     # Trigger WLAN driver load
     write /sys/kernel/boot_wlan/boot_wlan 1
@@ -287,13 +287,13 @@ on zygote-start
     mkdir /data/misc/display 0770 system graphics
 
     # Setup sensors-related directories and permissions
-    mkdir /persist/sensors 0775
-    chown root system /persist/sensors
-    write /persist/sensors/sensors_settings 1
-    chown root system /persist/sensors/sensors_settings
-    chmod 664 /persist/sensors/sensors_settings
-    chown root system /persist/sensors/sns.reg
-    chmod 664 /persist/sensors/sns.reg
+    mkdir /mnt/vendor/persist/sensors 0775
+    chown root system /mnt/vendor/persist/sensors
+    write /mnt/vendor/persist/sensors/sensors_settings 1
+    chown root system /mnt/vendor/persist/sensors/sensors_settings
+    chmod 664 /mnt/vendor/persist/sensors/sensors_settings
+    chown root system /mnt/vendor/persist/sensors/sns.reg
+    chmod 664 /mnt/vendor/persist/sensors/sns.reg
 
     mkdir /data/vendor/sensors 0770
     chown system system /data/vendor/sensors
