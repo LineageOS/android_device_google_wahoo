@@ -22,6 +22,30 @@
       },
       "revId": "2f10feb0d024a70873c6476d406a682d6a1817d4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce644a4_e7455a9b",
+        "filename": "liblight/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-03-10T01:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b93216ab_7529c178",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 53
+      },
+      "revId": "2f10feb0d024a70873c6476d406a682d6a1817d4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
