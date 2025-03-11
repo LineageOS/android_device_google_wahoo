@@ -773,7 +773,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Build necessary packages for vendor
 PRODUCT_PACKAGES += \
     android.hidl.safe_union@1.0.vendor \
-    chre \
+    chre_daemon_msm \
     ese-ls-provision \
     ese-replay \
     libhidltransport.vendor \
