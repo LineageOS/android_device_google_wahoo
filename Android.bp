@@ -1,6 +1,7 @@
 soong_namespace {
     imports: [
         "hardware/google/pixel",
+        "hardware/qcom/display/msm8998",
         "hardware/qcom/media/msm8998",
     ],
 }
