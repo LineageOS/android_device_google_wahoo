@@ -24,6 +24,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/qcom/data/ipacfg-mgr/msm8998 \
+    hardware/qcom/gps/msm8998 \
     hardware/qcom/msm8998 \
     hardware/qcom/wlan/legacy \
     hardware/qcom-caf/bootctrl
