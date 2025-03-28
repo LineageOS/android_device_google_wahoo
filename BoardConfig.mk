@@ -184,7 +184,5 @@ AB_OTA_PARTITIONS += \
     dtbo \
     vendor
 
-BUILD_BROKEN_ENFORCE_SYSPROP_OWNER := true
-
 # Allow Lineage config to override others
 -include device/google/wahoo/BoardConfigLineage.mk
