@@ -432,7 +432,6 @@ $(call soong_config_set,QTI_GPT_UTILS,USE_BSG_FRAMEWORK,false)
 
 #GNSS HAL
 PRODUCT_PACKAGES += \
-    libgps.utils \
     libgnss \
     liblocation_api \
     android.hardware.gnss@1.0-impl-qti \
@@ -458,7 +457,6 @@ endif
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     wificond \
-    libwpa_client \
     WifiOverlay
 
 # Connectivity
