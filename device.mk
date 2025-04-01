@@ -39,13 +39,6 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.svn=52
 
-PRODUCT_PACKAGES += \
-    messaging
-
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += chre_test_client
-endif
-
 LOCAL_PATH := device/google/wahoo
 
 SRC_MEDIA_HAL_DIR := hardware/qcom/media/msm8998
@@ -75,27 +68,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.insmod.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.insmod.sh \
     $(LOCAL_PATH)/init.ramoops.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.ramoops.sh
 
-ifeq (,$(filter %_xr,$(TARGET_PRODUCT)))
-  PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.hardware.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_HARDWARE).rc
-else
-  # XR variants for Pixel devices (e.g. walleye_xr and taimen_xr). Note that
-  # this is a nonintrusive way to add XR-specific init.rc entries, as the
-  # init.hardware.xr.rc file imports the original init.hardware.rc file.
-  PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.hardware.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_HARDWARE).common.rc \
-    $(LOCAL_PATH)/init.hardware.xr.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_HARDWARE).rc
-endif
 
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-  PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/init.hardware.diag.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).diag.rc
-  PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/init.hardware.chamber.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).chamber.rc
-else
-  PRODUCT_COPY_FILES += \
-      $(LOCAL_PATH)/init.hardware.diag.rc.user:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).diag.rc
-endif
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.hardware.diag.rc.user:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_HARDWARE).diag.rc
 
 MSM_VIDC_TARGET_LIST := msm8998 # Get the color format from kernel headers
 MASTER_SIDE_CP_TARGET_LIST := msm8998 # ION specific settings
@@ -117,13 +94,8 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_system=true
 
 PRODUCT_PACKAGES += \
-    update_engine_sideload
-
-# The following modules are included in debuggable builds only.
-PRODUCT_PACKAGES_ENG += \
-    a_sns_test \
-    bootctl \
-    update_engine_client
+    update_engine_sideload \
+    bootctrl
 
 # Write flags to the vendor space in /misc partition.
 PRODUCT_PACKAGES += \
@@ -172,7 +144,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
     frameworks/native/data/etc/android.software.opengles.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml \
-    frameworks/native/data/etc/android.hardware.telephony.carrierlock.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.carrierlock.xml \
+    frameworks/native/data/etc/android.hardware.telephony.carrierlock.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.carrierlock.xml
 
 # power.stats HAL
 PRODUCT_PACKAGES += \
@@ -291,7 +263,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # camera TNR controls
 PRODUCT_PROPERTY_OVERRIDES += \
-  persist.camera.tnr.video=1 \
+  persist.camera.tnr.video=1
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
@@ -398,11 +370,6 @@ PRODUCT_PACKAGES += \
     libmmjpeg_interface \
     libmmcamera_interface
 
-# Google Camera HAL test libraries in debug builds
-PRODUCT_PACKAGES_ENG += \
-    libgoogle_camera_hal_proprietary_tests \
-    libgoogle_camera_hal_tests.vendor
-
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl:64 \
     android.hardware.sensors@1.0-service
@@ -440,24 +407,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
-
-HOSTAPD := hostapd
-HOSTAPD += hostapd_cli
-PRODUCT_PACKAGES += $(HOSTAPD)
-
-WPA := wpa_supplicant.conf
-WPA += wpa_supplicant
-PRODUCT_PACKAGES += $(WPA)
-
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += wpa_cli
-endif
-
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
+    hostapd \
     wificond \
-    WifiOverlay
+    WifiOverlay \
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 # Connectivity
 PRODUCT_PACKAGES += \
@@ -489,9 +446,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.audio.monitorRotation=true
 
-# Bug 62375603
-# PRODUCT_PROPERTY_OVERRIDES += audio.adm.buffering.ms=4
-
 # MIDI feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
@@ -499,19 +453,6 @@ PRODUCT_COPY_FILES += \
 # Audio low latency feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml
-
-# Pro audio feature
-# PRODUCT_COPY_FILES += \
-#   frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml
-
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += \
-    tinyplay \
-    tinycap \
-    tinymix \
-    tinypcminfo \
-    cplay
-endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
@@ -529,7 +470,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
     $(LOCAL_PATH)/sound_trigger_mixer_paths_wcd9340.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_wcd9340.xml \
-    $(LOCAL_PATH)/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml \
+    $(LOCAL_PATH)/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -537,7 +478,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
-    $(LOCAL_PATH)/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
+    $(LOCAL_PATH)/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
 # IMS
 PRODUCT_PACKAGES += \
@@ -546,7 +487,7 @@ PRODUCT_PACKAGES += \
 
 # Codec2 switch
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.media.codec2=2 \
+    debug.media.codec2=2
 
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.snd_card.open.retries=50
@@ -556,7 +497,7 @@ PRODUCT_COPY_FILES += \
 
 # Fingerprint HIDL implementation
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.fingerprint.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.fingerprint.sh \
+    $(LOCAL_PATH)/init.fingerprint.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.fingerprint.sh
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
@@ -573,12 +514,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml
 
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-# Subsystem ramdump
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.ssr.enable_ramdumps=1
-endif
-
 # Subsystem silent restart
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=modem,slpi,adsp
@@ -593,16 +528,6 @@ PRODUCT_COPY_FILES += \
 # Use the default charger mode images
 PRODUCT_PACKAGES += \
     charger_res_images
-
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-# b/36703476: Set default log size to 1M
-PRODUCT_PROPERTY_OVERRIDES += \
-  ro.logd.size=1M
-# b/114766334: persist all logs by default rotating on 30 files of 1MiB
-PRODUCT_PROPERTY_OVERRIDES += \
-  logd.logpersistd=logcatd \
-  logd.logpersistd.size=30
-endif
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
@@ -672,12 +597,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # NFC/camera interaction workaround - DO NOT COPY TO NEW DEVICES
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.notify_nfc=1
-
-# default usb oem functions
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
-  PRODUCT_PROPERTY_OVERRIDES += \
-      persist.vendor.usb.usbradio.config=diag
-endif
 
 # Vibrator HAL
 PRODUCT_PROPERTY_OVERRIDES += \
