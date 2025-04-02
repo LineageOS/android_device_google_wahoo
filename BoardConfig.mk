@@ -173,7 +173,9 @@ TARGET_VENDOR_PROP := $(LOCAL_PATH)/vendor.prop
 DEVICE_MANIFEST_FILE := device/google/wahoo/manifest.xml
 DEVICE_MATRIX_FILE := device/google/wahoo/compatibility_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE := device/google/wahoo/framework_manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/google/wahoo/device_framework_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    device/google/wahoo/device_framework_matrix.xml \
+    vendor/lineage/config/device_framework_matrix.xml
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 BOARD_VNDK_VERSION := current
@@ -187,6 +189,3 @@ AB_OTA_PARTITIONS += \
     vbmeta \
     dtbo \
     vendor
-
-# Allow Lineage config to override others
--include device/google/wahoo/BoardConfigLineage.mk

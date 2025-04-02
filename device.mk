@@ -46,7 +46,9 @@ $(call inherit-product, device/google/wahoo/utils.mk)
 PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_SHIPPING_API_LEVEL := 26
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.recovery.hardware.rc:recovery/root/init.recovery.$(PRODUCT_HARDWARE).rc \
@@ -87,6 +89,27 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_PACKAGES += \
     update_engine_sideload \
     bootctl
+
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
+# Elmyra
+PRODUCT_PACKAGES += \
+    ElmyraService
+
+# fastbootd
+PRODUCT_PACKAGES += \
+    fastbootd
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fastbootd.available=true
+
+# GMS
+ifeq ($(WITH_GMS),true)
+GMS_MAKEFILE=gms_minimal.mk
+WITH_GMS_COMMS_SUITE := false
+endif
 
 # Write flags to the vendor space in /misc partition.
 PRODUCT_PACKAGES += \
