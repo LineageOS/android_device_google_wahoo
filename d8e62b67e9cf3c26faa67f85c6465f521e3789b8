@@ -16,6 +16,24 @@
       "message": "kill this flag in BoardConfig",
       "revId": "d8e62b67e9cf3c26faa67f85c6465f521e3789b8",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "613e0da9_01e64c5a",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-04-02T23:34:30Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "713ce659_d661430f",
+      "revId": "d8e62b67e9cf3c26faa67f85c6465f521e3789b8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
