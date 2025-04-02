@@ -162,6 +162,10 @@ TARGET_USES_COLOR_METADATA := true
 # Charger Mode
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
+# Properties
+TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
+TARGET_VENDOR_PROP := $(LOCAL_PATH)/vendor.prop
+
 # Vendor Interface Manifest
 DEVICE_MANIFEST_FILE := device/google/wahoo/manifest.xml
 DEVICE_MATRIX_FILE := device/google/wahoo/compatibility_matrix.xml
