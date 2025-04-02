@@ -35,17 +35,11 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
 
-# Set the SVN for the targeted MR release
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.svn=52
-
 LOCAL_PATH := device/google/wahoo
 
 SRC_MEDIA_HAL_DIR := hardware/qcom/media/msm8998
 SRC_DISPLAY_HAL_DIR := hardware/qcom/display/msm8998
 SRC_CAMERA_HAL_DIR := hardware/qcom/camera/msm8998
-
-TARGET_SYSTEM_PROP := $(TARGET_SYSTEM_PROP) $(LOCAL_PATH)/system.prop
 
 $(call inherit-product, device/google/wahoo/utils.mk)
 
@@ -83,9 +77,6 @@ PRODUCT_PACKAGES += \
     cppreopts.sh \
     update_engine \
     update_verifier
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cp_system_other_odex=1
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -160,111 +151,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.0 \
     android.hardware.radio@1.4-service.legacy
 
-# Audio fluence, ns, aec property, voice and media volume steps
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluencepro \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.speaker=true \
-    persist.audio.fluence.voicecomm=true \
-    persist.audio.fluence.voicerec=false \
-    ro.config.vc_call_vol_steps=7 \
-    ro.config.media_vol_steps=25
-
-# graphics
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.egl=adreno \
-    ro.opengles.version=196610
-
-# b/73640835
-PRODUCT_PROPERTY_OVERRIDES += \
-    sdm.debug.rotator_downscale=1
-
-# Enable camera EIS3.0
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.is_type=5 \
-    persist.camera.gzoom.at=0 \
-    persist.camera.llv.fuse=2
-
-# Enable camera ae saturation stats
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.saturationext=1
-
-# OEM Unlock reporting
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.oem_unlock_supported=1
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.cne.feature=1 \
-    persist.data.iwlan.enable=true \
-    persist.radio.RATE_ADAPT_ENABLE=1 \
-    persist.radio.ROTATION_ENABLE=1 \
-    persist.radio.VT_ENABLE=1 \
-    persist.radio.VT_HYBRID_ENABLE=1 \
-    persist.radio.apm_sim_not_pwdn=1 \
-    persist.radio.custom_ecc=1 \
-    persist.radio.data_ltd_sys_ind=1 \
-    persist.radio.is_wps_enabled=true \
-    persist.radio.videopause.mode=1 \
-    persist.radio.sap_silent_pin=1 \
-    persist.radio.sib16_support=1 \
-    persist.radio.data_con_rprt=true \
-    persist.vendor.radio.mt_sms_ack=30 \
-    persist.radio.always_send_plmn=false\
-    persist.rcs.supported=1
-
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.telephony.block_binder_thread_on_incoming_calls=false
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
-
-# Disable snapshot timer
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.snapshot_enabled=0 \
-    persist.radio.snapshot_timer=0
-
-# By default, enable zram; experiment can toggle the flag,
-# which takes effect on boot
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.zram_enabled=1
-
-PRODUCT_PROPERTY_OVERRIDES += \
-  ro.vendor.extension_library=libqti-perfd-client.so
-
-# settings to enable Device Orientation Sensors
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qti.sensors.dev_ori=true
-
-# settings to disable unused secondary wakeup
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qti.sensors.wu=false
-
-# settings to disable unused algorithms
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qti.sdk.sensors.gestures=false \
-    ro.qti.sensors.amd=false \
-    ro.qti.sensors.cmc=false \
-    ro.qti.sensors.facing=false \
-    ro.qti.sensors.pedometer=false \
-    ro.qti.sensors.rmd=false \
-    ro.qti.sensors.scrn_ortn=false
-
-# use SMGR supplied version of step detector and counter
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qti.sensors.step_counter=false \
-    ro.qti.sensors.step_detector=false
-
-# camera gyro and laser sensor
-PRODUCT_PROPERTY_OVERRIDES += \
-  persist.camera.gyro.android=20 \
-  persist.camera.tof.direct=1 \
-  persist.camera.max.previewfps=60 \
-  persist.camera.sensor.hdr=2
-
-# camera TNR controls
-PRODUCT_PROPERTY_OVERRIDES += \
-  persist.camera.tnr.video=1
-
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
@@ -294,9 +180,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl:64 \
     android.hardware.light@2.0-service
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.lights=wahoo
-
 # eSE applet HALs
 PRODUCT_PACKAGES += \
     esed
@@ -304,38 +187,6 @@ PRODUCT_PACKAGES += \
 # Memtrack HAL
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
-
-# Bluetooth Properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    bluetooth.device.class_of_device=90,2,12 \
-    bluetooth.hardware.power.operating_voltage_mv=3300 \
-    bluetooth.profile.asha.central.enabled?=true \
-    bluetooth.profile.a2dp.source.enabled?=true \
-    bluetooth.profile.avrcp.target.enabled?=true \
-    bluetooth.profile.bas.client.enabled?=true \
-    bluetooth.profile.gatt.enabled?=true \
-    bluetooth.profile.hfp.ag.enabled?=true \
-    bluetooth.profile.hid.device.enabled?=true \
-    bluetooth.profile.hid.host.enabled?=true \
-    bluetooth.profile.map.server.enabled?=true \
-    bluetooth.profile.opp.enabled?=true \
-    bluetooth.profile.pan.nap.enabled?=true \
-    bluetooth.profile.pan.panu.enabled?=true \
-    bluetooth.profile.pbap.server.enabled?=true \
-    bluetooth.profile.sap.server.enabled?=true
-
-# Bluetooth SoC
-PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.qcom.bluetooth.soc=cherokee
-
-# Property for loading BDA from bdaddress module in kernel
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.bt.bdaddr_path=/sys/module/bdaddress/parameters/bdaddress
-
-# Bluetooth WiPower
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.bluetooth.emb_wp_mode=false \
-    ro.vendor.bluetooth.wipower=false
 
 # DRM HAL
 PRODUCT_PACKAGES += \
@@ -442,10 +293,6 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
     android.hardware.audio@2.0-service
 
-# stereo speakers: orientation changes swap L/R channels
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.audio.monitorRotation=true
-
 # MIDI feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
@@ -485,13 +332,6 @@ PRODUCT_PACKAGES += \
     PresencePolling \
     RcsService
 
-# Codec2 switch
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.media.codec2=2
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    audio.snd_card.open.retries=50
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf
 
@@ -514,9 +354,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml
 
-# Subsystem silent restart
+# Ensure that this overrides the included file below
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.ssr.restart_level=modem,slpi,adsp
+    dalvik.vm.heapgrowthlimit=256m
 
 # setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
@@ -537,15 +377,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     folio_daemon
 
-# Storage: for factory reset protection feature
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.frp.pst=/dev/block/platform/soc/1da4000.ufshc/by-name/frp
-
 PRODUCT_ENFORCE_RRO_TARGETS := *
-
-# Override heap growth limit due to high display density on device
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=256m
 
 # Privileged permissions whitelist
 PRODUCT_COPY_FILES += \
@@ -554,95 +386,26 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ipacm
 
-#Set default CDMA subscription to RUIM
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.default_cdma_sub=0
-
-# Set network mode to Global by default and no DSDS/DSDA
-PRODUCT_PROPERTY_OVERRIDES += ro.telephony.default_network=10
-
-# Add an extra 10% saturation to display colors
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.sf.color_saturation=1.1
-
 # Easel device feature
 PRODUCT_COPY_FILES += \
     device/google/wahoo/permissions/com.google.hardware.camera.easel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.google.hardware.camera.easel.xml
-
-# QC time-daemon to use persist
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.delta_time.enable=true
-
-# Do not drop packets based upon enqueue sequence
-# to avoid freeze
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.ims.dropset_feature=0
-
-# Enable CameraHAL perfd usage
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.perfd.enable=false
-
-# Enable Gcam FD Ensemble
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.gcam.fd.ensemble=1
 
 # Preopt SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUIGoogle
 
-# audio effects config
-PRODUCT_PROPERTY_OVERRIDES += \
-    fmas.hdph_sgain=0
-
-# NFC/camera interaction workaround - DO NOT COPY TO NEW DEVICES
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.camera.notify_nfc=1
-
-# Vibrator HAL
-PRODUCT_PROPERTY_OVERRIDES += \
-  ro.vibrator.hal.closeloop.threshold=20
-
 # default atrace HAL
 PRODUCT_PACKAGES += \
     android.hardware.atrace@1.0-service
 
-# Surface flinger
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
-    ro.surface_flinger.protected_contents=true \
-    ro.surface_flinger.use_color_management=true \
-    ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
-    ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
-
-# Use /product/etc/fstab.postinstall to mount system_other.
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.postinstall.fstab.prefix=/product
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.postinstall:$(TARGET_COPY_OUT_PRODUCT)/etc/fstab.postinstall
-
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.charger.enable_suspend=true
-
-# Enable OPA features
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.opa.eligible_device=true
 
 # Build necessary packages for vendor
 PRODUCT_PACKAGES += \
     chre_daemon_msm \
     ese-ls-provision \
     ese-replay
-
-# Enable missing vendor props
-PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true \
-    media.mediadrmservice.enable=true \
-    ro.gfx.driver.0=com.google.pixel.wahoo.gfxdrv \
-    ro.hardware.egl=adreno \
-    ro.hardware.vulkan=adreno \
-    ro.oem_unlock.pst=/dev/block/platform/soc/1da4000.ufshc/by-name/misc \
-    ro.oem_unlock.pst_offset=6144
 
 # Setting vendor SPL
 VENDOR_SECURITY_PATCH := 2020-10-05
@@ -651,10 +414,6 @@ VENDOR_SECURITY_PATCH := 2020-10-05
 PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/cgroups_28.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
     system/core/libprocessgroup/profiles/task_profiles_28.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
-
-# Zygote
-PRODUCT_PROPERTY_OVERRIDES += \
-    zygote.critical_window.minute=10
 
 include hardware/google/pixel/vibrator/drv2624/device.mk
 include hardware/google/pixel/mm/device_legacy.mk
