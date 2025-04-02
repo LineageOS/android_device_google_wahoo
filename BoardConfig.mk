@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+COMMON_PATH := device/google/wahoo
+
 TARGET_BOARD_PLATFORM := msm8998
 
 TARGET_ARCH := arm64
@@ -62,8 +64,8 @@ TARGET_KERNEL_SOURCE := kernel/google/wahoo
 TARGET_NEEDS_DTBOIMAGE := true
 
 # Partitions (listed in the file) to be wiped under recovery.
-TARGET_RECOVERY_WIPE := device/google/wahoo/recovery.wipe
-TARGET_RECOVERY_FSTAB := device/google/wahoo/fstab.hardware
+TARGET_RECOVERY_WIPE := $(COMMON_PATH)/recovery.wipe
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/fstab.hardware
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
@@ -89,14 +91,14 @@ BOARD_USES_SYSTEM_OTHER_ODEX := true
 
 BOARD_ROOT_EXTRA_FOLDERS := persist firmware metadata
 
-BOARD_VENDOR_SEPOLICY_DIRS += device/google/wahoo/sepolicy/vendor
-SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS := device/google/wahoo/sepolicy/public
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS := device/google/wahoo/sepolicy/private
-BOARD_VENDOR_SEPOLICY_DIRS += device/google/wahoo/sepolicy/verizon
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS := $(COMMON_PATH)/sepolicy/public
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS := $(COMMON_PATH)/sepolicy/private
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/verizon
 BOARD_VENDOR_SEPOLICY_DIRS += hardware/google/pixel-sepolicy/citadel
 BOARD_VENDOR_SEPOLICY_DIRS += hardware/google/pixel-sepolicy/powerstats
 
-TARGET_FS_CONFIG_GEN := device/google/wahoo/config.fs
+TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 QCOM_BOARD_PLATFORMS += msm8998
 BOARD_HAVE_BLUETOOTH_QCOM := true
@@ -148,15 +150,15 @@ TARGET_USES_HWC2 := true
 TARGET_USES_COLOR_METADATA := true
 
 # Properties
-TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
-TARGET_VENDOR_PROP := $(LOCAL_PATH)/vendor.prop
+TARGET_SYSTEM_PROP := $(COMMON_PATH)/system.prop
+TARGET_VENDOR_PROP := $(COMMON_PATH)/vendor.prop
 
 # Vendor Interface Manifest
-DEVICE_MANIFEST_FILE := device/google/wahoo/manifest.xml
-DEVICE_MATRIX_FILE := device/google/wahoo/compatibility_matrix.xml
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/google/wahoo/framework_manifest.xml
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/framework_manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    device/google/wahoo/device_framework_matrix.xml \
+    $(COMMON_PATH)/device_framework_matrix.xml \
     vendor/lineage/config/device_framework_matrix.xml
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
