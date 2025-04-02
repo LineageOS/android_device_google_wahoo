@@ -18,7 +18,7 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 PRODUCT_ACTIONABLE_COMPATIBLE_PROPERTY_DISABLE := true
 
 PRODUCT_SOONG_NAMESPACES += \
-    device/google/wahoo \
+    $(LOCAL_PATH) \
     vendor/google/camera \
     hardware/google/camera \
     hardware/google/interfaces \
@@ -30,18 +30,16 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/bootctrl
 
 PRODUCT_COPY_FILES += \
-    device/google/wahoo/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml \
+    $(LOCAL_PATH)/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml
 
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
-
-LOCAL_PATH := device/google/wahoo
 
 SRC_MEDIA_HAL_DIR := hardware/qcom/media/msm8998
 SRC_DISPLAY_HAL_DIR := hardware/qcom/display/msm8998
 SRC_CAMERA_HAL_DIR := hardware/qcom/camera/msm8998
 
-$(call inherit-product, device/google/wahoo/utils.mk)
+$(call inherit-product, $(LOCAL_PATH)/utils.mk)
 
 PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_SHIPPING_API_LEVEL := 26
@@ -222,7 +220,7 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras
 
 PRODUCT_COPY_FILES += \
-    device/google/wahoo/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf \
 
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.1-service.wahoo
@@ -253,7 +251,7 @@ PRODUCT_COPY_FILES += \
 
 # Default permission grant exceptions
 PRODUCT_COPY_FILES += \
-    device/google/wahoo/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml
+    $(LOCAL_PATH)/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml
 
 PRODUCT_PACKAGES += \
     fs_config_dirs \
@@ -385,8 +383,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
 PRODUCT_COPY_FILES += \
-    device/google/wahoo/fstab.hardware:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(PRODUCT_HARDWARE) \
-    device/google/wahoo/fstab.hardware:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.$(PRODUCT_HARDWARE)
+    $(LOCAL_PATH)/fstab.hardware:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(PRODUCT_HARDWARE) \
+    $(LOCAL_PATH)/fstab.hardware:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.$(PRODUCT_HARDWARE)
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
@@ -400,14 +398,14 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Privileged permissions whitelist
 PRODUCT_COPY_FILES += \
-    device/google/wahoo/permissions/privapp-permissions-aosp_wahoo.xml:system/etc/permissions/privapp-permissions-aosp_wahoo.xml
+    $(LOCAL_PATH)/permissions/privapp-permissions-aosp_wahoo.xml:system/etc/permissions/privapp-permissions-aosp_wahoo.xml
 
 PRODUCT_PACKAGES += \
     ipacm
 
 # Easel device feature
 PRODUCT_COPY_FILES += \
-    device/google/wahoo/permissions/com.google.hardware.camera.easel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.google.hardware.camera.easel.xml
+    $(LOCAL_PATH)/permissions/com.google.hardware.camera.easel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.google.hardware.camera.easel.xml
 
 # default atrace HAL
 PRODUCT_PACKAGES += \
