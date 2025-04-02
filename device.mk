@@ -408,4 +408,4 @@ include hardware/google/pixel/mm/device_legacy.mk
 include device/google/gs-common/thermal/thermal_hal/device.mk
 
 # power HAL
--include hardware/google/pixel/power-libperfmgr/aidl/device.mk
+include hardware/google/pixel/power-libperfmgr/aidl/device.mk
