@@ -155,9 +155,6 @@ TARGET_USES_HWC2 := true
 # Display
 TARGET_USES_COLOR_METADATA := true
 
-# Charger Mode
-BOARD_CHARGER_ENABLE_SUSPEND := true
-
 # Properties
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 TARGET_VENDOR_PROP := $(LOCAL_PATH)/vendor.prop
