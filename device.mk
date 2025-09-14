@@ -25,6 +25,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/camera \
     hardware/google/interfaces \
     hardware/google/pixel \
+    hardware/qcom/audio \
     hardware/qcom/data/ipacfg-mgr/msm8998 \
     hardware/qcom/gps/msm8998 \
     hardware/qcom/msm8998 \
@@ -317,6 +318,12 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.2-impl:32 \
     android.hardware.bluetooth.audio-impl \
     android.hardware.audio@2.0-service
+
+$(call soong_config_set,qtiaudio,feature_hwdep_cal,true)
+$(call soong_config_set,qtiaudio,feature_multi_voice_sessions,true)
+$(call soong_config_set,qtiaudio,feature_snd_monitor,true)
+$(call soong_config_set,qtiaudio,feature_usb_tunnel,true)
+$(call soong_config_set,qtiaudio,feature_sound_trigger,true)
 
 # MIDI feature
 PRODUCT_COPY_FILES += \
