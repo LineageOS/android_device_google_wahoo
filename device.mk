@@ -26,6 +26,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/qcom/audio \
+    hardware/qcom/bt/msm8998/libbt-vendor \
     hardware/qcom/data/ipacfg-mgr/msm8998 \
     hardware/qcom/gps/msm8998 \
     hardware/qcom/msm8998 \

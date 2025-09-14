@@ -98,7 +98,6 @@ BOARD_VENDOR_SEPOLICY_DIRS += hardware/google/pixel-sepolicy/powerstats
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 QCOM_BOARD_PLATFORMS += msm8998
-BOARD_HAVE_BLUETOOTH_QCOM := true
 
 # Camera
 TARGET_USES_AOSP := true
